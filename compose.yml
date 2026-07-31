@@ -1,17 +1,25 @@
 ---
-services:
-    mysqldb:
-      container_name: mysqldb
-      image: shaikmustafa77/hussian:db
-      ports:
-        - "3306:3306"
+networks:
+  bloodbank:
+    driver: bridge
 
-    application:
-      container_name: mycont
-      image: shaikmustafa77/hussian:app
-      ports:
-        - "1212:80"
-      depends_on:
-        - mysqldb
+services:
+  db:
+    container_name: mysql
+    image: maha110/mysql_bloodbank:v1
+    ports:
+      - "3306:3306"
+    networks:
+      - bloodbank
+
+  frontend:
+    container_name: php_app
+    image: maha110/frontend_bloodbankapp
+    networks:
+      - bloodbank
+    ports:
+      - "80:80"
+    depends_on:
+      - db
       
     
