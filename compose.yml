@@ -14,7 +14,7 @@ services:
 
   frontend:
     container_name: php_app
-    image: maha110/frontend_bloodbankapp
+    image: maha110/frontend_bloodbankapp:v1
     networks:
       - bloodbank
     ports:
