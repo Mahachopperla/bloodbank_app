@@ -4,7 +4,7 @@ networks:
     driver: bridge
 
 services:
-  db:
+  mysqldb:
     container_name: mysql
     image: maha110/mysql_bloodbank:v1
     ports:
@@ -12,7 +12,7 @@ services:
     networks:
       - bloodbank
 
-  frontend:
+  application:
     container_name: php_app
     image: maha110/frontend_bloodbankapp:v1
     networks:
